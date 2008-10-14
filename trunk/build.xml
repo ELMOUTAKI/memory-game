@@ -1,0 +1,57 @@
+<project name="Game" default="dist" basedir=".">
+	<description>Build File for GME. Also necessary for eclipse build</description>
+
+	<target name="init">
+		<property file="build.properties" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean" depends="init">
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}" includes="**/*" />
+		</delete>
+		<delete includeemptydirs="true">
+			<fileset dir="${dist.dir}" includes="**/*" />
+		</delete>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: moveDataDir                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="moveDataDir" depends="init">
+		<copy todir="${build.obj.dir}">
+			<fileset dir="${src.obj.dir}" />
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: compile                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" />
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: compile                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="jar" depends="compile,moveDataDir">
+		<jar destfile="${dist.dir}/game.jar" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="game.Main" />
+			</manifest>
+		</jar>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: dist                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="dist" depends="jar,compile,moveDataDir">
+	</target>
+
+</project>
