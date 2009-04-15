@@ -1,6 +1,7 @@
 /**
  * Game 
- * (c)2008 Yousry Abdallah
+ * (c)2008,2009 Yousry Abdallah
+ * Released under GPL V3
  */
 
 package game;
