@@ -1,0 +1,1 @@
+You play with four tile pairs – eight pieces. In each round one piece is shown and you have to find the matching piece. To make things complicated after each round two pieces are exchanged. To start the first round you have to left click on the center. The following video should explain the gameplay.
